@@ -1,5 +1,6 @@
 # ILoveCars
-#Pasos para el uso de la aplicación ILoveCars:
+#Pasos para el uso de la aplicación ILoveCars: 
+
 1º Loguearse en la aplicación (hay que hacer clic en el botón "aquí" 
 situado en el centro del la página).
 
