@@ -1,0 +1,71 @@
+{% extends "plantilla_herencia.html" %}
+
+{% block contenido %}
+<div class="formularioAlineado">
+    <h1>Nuevo Coche</h1>
+
+    <form id="frmAddCoche"
+          method="post"
+          action="/coches/coche_add"
+          enctype="multipart/form-data"
+          onsubmit="return check()">
+
+        <p>
+            <label for="edMarca">Marca</label>
+            <input type="text" id="edMarca" name="edMarca"
+                   placeholder="Marca"/>
+        </p>
+
+        <p>
+            <label for="edModelo">Modelo</label>
+            <input type="text" id="edModelo" name="edModelo"
+                   placeholder="Modelo"/>
+        </p>
+
+        <p>
+            <label for="edCarroceria">Carrocería</label>
+            <select id="edCarroceria" name="edCarroceria">
+                <option> 4x4</option>
+                <option selected=> Berlina</option>
+                <option> Camioneta</option>
+                <option> Descapotable</option>
+                <option> Hatchback</option>
+                <option> Monovolumen</option>
+                <option> SUV</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="edAnho">Año de fabricación</label>
+            <input type="number" id="edAnho" name="edAnho"
+                   value="2021"
+                   min="1885"
+                   step="1"/>
+        </p>
+
+        <p>
+            <label for="edFoto">Fotografía</label>
+            <input type="file" id="edFoto" name="edFoto"/>
+        </p>
+
+        <p><input type="hidden" id="edIdCoche" name="edIdCoche"/></p>
+
+        <p><input type="submit" value="Crear"></p>
+
+    </form>
+</div>
+<script>
+    function check() {
+        const edMarca = document.getElementById("edMarca");
+        const edModelo = document.getElementById("edModelo");
+        const edCarroceria = document.getElementById("edCarroceria");
+        const edAnho = document.getElementById("edAnho");
+
+        return (edMarca.value.trim().length > 0
+            && edModelo.value.trim().length > 0
+            && edCarroceria.value.trim().length > 0
+            && edAnho.value.trim().length > 0);
+    }
+</script>
+
+{% endblock %}

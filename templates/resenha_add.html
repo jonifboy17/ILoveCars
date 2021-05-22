@@ -1,0 +1,31 @@
+{% extends "plantilla_herencia.html" %}
+
+{% block contenido %}
+
+<div class="presentacion">
+<h1>Nueva Reseña</h1>
+
+<form id="frmResenhaAdd"
+      method="post"
+      action="/resenhas/resenha_add?car={{ clave_coche }}"
+      onsubmit="return check()">
+
+    <p>
+        <label for="edOpinion">Tu Opinión</label>
+        <br>
+        <textarea id="edOpinion" name="edOpinion" rows="5" cols="50"></textarea>
+    </p>
+
+    <p><input type="submit" value="Crear"></p>
+
+</form>
+</div>
+<script>
+    function check() {
+        const edOpinion = document.getElementById("edOpinion");
+
+        return (edOpinion.value.trim().length > 0);
+    }
+</script>
+
+{% endblock %}

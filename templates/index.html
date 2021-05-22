@@ -1,0 +1,38 @@
+{% extends "plantilla_herencia.html" %}
+
+{% block contenido %}
+
+{% if usr %}
+        <p style="color: #C2C8D0;font-size: 20px; ">
+            <a href="/coches/coche_add">Nuevo coche</a>
+        </p>
+    <div class="presentacion">
+        <h2 style="color: #C2C8D0;text-align: center">Album de coches</h2>
+         {% if coches.count() > 0 %}
+             {% for coche in coches %}
+
+                {% include "entrada_coche.html" %}
+                <br>
+                {% if coche.foto != None %}
+                    <img width="400px" height="300px" class="bd-placeholder-img card-img-top" src="data:image/png;base64,{{coche.foto.encode('base64')}}">
+                {% else %}
+                    <img class="bd-placeholder-img card-img-top" src="img/silueta.jpg">
+                {% endif %}
+                <br>
+            (<a href="/coches/coche_delete?id={{ coche.key.urlsafe()}}">Borrar</a>)
+            (<a href="/coches/coche_edit?id={{ coche.key.urlsafe()}}">Modificar</a>)
+            (<a href="/resenhas/resenha_showall?car={{ coche.key.urlsafe()}}">Reseñas</a>)
+            <br> <br>
+            {% endfor %}
+        {% else %}
+        <p><b>No hay coches registrados en la aplicación</b></p>
+
+        {% endif %}
+    </div>
+{% else %}
+    <div class="presentacion">
+        !Logueate <a href="{{ url_usr }}">aquí</a> para poder disfrutar de esta app!
+    </div>
+{% endif %}
+
+{% endblock %}

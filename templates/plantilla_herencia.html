@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link href="/templates/style.css" rel="stylesheet" type="text/css" />
+    <title>I love Cars</title>
+</head>
+<header id="header">
+	<div class="topnav">
+
+        <h3 class="cerrarSesion">
+            {% if usr %}
+                <a href="{{url_usr}}">Cerrar sesión</a>
+            {% endif %}
+        </h3>
+        <a  href="/" class="logo_titulo">I love cars</a>
+    </div>
+</header>
+<body>
+
+    {% block contenido %}{% endblock %}
+
+</body>
+
+<footer>
+    <div >
+        <p class ="letraspie">(C) 2021 - Todos los derechos reservados</p>
+    </div>
+</footer>
+
+</html>

@@ -1,0 +1,30 @@
+{% extends "plantilla_herencia.html" %}
+
+{% block contenido %}
+<div class="presentacion">
+    <h2>Resenhas</h2>
+    <h3>{{ coche.marca }} {{ coche.modelo }} {{ coche.carroceria }} {{ coche.anho}} </h3>
+    {% if coche.foto != None %}
+        <img width="400px" height="300px" class="bd-placeholder-img card-img-top"
+         src="data:image/png;base64,{{coche.foto.encode('base64')}}">
+    {% else %}
+        <img class="bd-placeholder-img card-img-top" src="img/silueta.jpg">
+    {% endif %}
+    <br>
+    <div style="color: #C2C8D0" >
+    {% if resenhas.count() > 0 %}
+        {% for resenha in resenhas %}
+            <br> <br>
+            {% include "entrada_resenha.html" %}
+            <br>
+        {% endfor %}
+    <br>
+    {% else %}
+        <p><b>No hay resenhas para el coche</b></p>
+    {% endif %}
+    </div>
+    <p>
+        <a href="/resenhas/resenha_add?car={{ coche.key.urlsafe()}}">Nueva reseña</a>
+    </p>
+</div>
+{% endblock %}
