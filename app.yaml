@@ -1,0 +1,46 @@
+application: proyecto
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /
+  script: handlers.main.app
+
+- url: /templates
+  static_dir: templates
+  application_readable: true
+
+- url: /bienvenida
+  script: handlers.respuesta.app
+  login: required
+
+- url: /coches/coche_add
+  script: handlers.coches.coche_add.app
+
+- url: /coches/coche_delete
+  script: handlers.coches.coche_delete.app
+
+- url: /coches/coche_edit
+  script: handlers.coches.coche_edit.app
+
+- url: /resenhas/resenha_showall
+  script: handlers.resenhas.resenha_showall.app
+
+- url: /resenhas/resenha_add
+  script: handlers.resenhas.resenha_add.app
+
+libraries:
+- name: webapp2
+  version: "2.5.2"
+
+- name: jinja2
+  version: "latest"
+
+- name: PIL
+  version: "latest"
